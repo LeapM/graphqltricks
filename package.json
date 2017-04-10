@@ -1,0 +1,26 @@
+{
+  "name": "graphqltricks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeapM/graphqltricks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeapM/graphqltricks/issues"
+  },
+  "homepage": "https://github.com/LeapM/graphqltricks#readme",
+  "dependencies": {
+    "graphql": "^0.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}
