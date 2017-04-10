@@ -1,5 +1,7 @@
-
-import {graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
+/**
+ * node does't support ES6 import yet. User require as a workaround
+ */
+var {graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
 
 var schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -10,12 +12,18 @@ var schema = new GraphQLSchema({
         resolve() {
           return 'world';
         }
+      },
+      testfield:{
+        type:GraphQLString,
+        resolve(){
+          return "complete"
+        }
       }
     }
   })
 });
 
-var query = '{ hello }';
+var query = '{ hello,testfield }';
 
 graphql(schema, query).then(result => {
 
