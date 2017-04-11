@@ -1,36 +1,18 @@
+var express = require('express');
+var graphqlHTTP = require('express-graphql');
+var port = 4000;
 /**
  * node does't support ES6 import yet. User require as a workaround
  */
-var {graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } = require('graphql');
+var {schema,root} = require("./schema");
+var app = express();
 
-var schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return 'world';
-        }
-      },
-      testfield:{
-        type:GraphQLString,
-        resolve(){
-          return "complete"
-        }
-      }
-    }
-  })
-});
+app.use('/graphql',graphqlHTTP({
+  schema,
+  rootValue:root,
+  graphiql:true,
+}));
 
-var query = '{ hello,testfield }';
-
-graphql(schema, query).then(result => {
-
-  // Prints
-  // {
-  //   data: { hello: "world" }
-  // }
-  console.log(result);
-
+app.listen(port,()=>{
+  console.log("Running a Graphql API Server at localhost:4000/graphql")
 });
